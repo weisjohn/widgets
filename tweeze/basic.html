@@ -21,14 +21,14 @@
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-  <link rel="stylesheet" href="css/style.css">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
   
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
   <!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
        Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
        for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
-  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+  <!-- <script src="js/libs/modernizr-2.0.6.min.js"></script> -->
 </head>
 
 <body>
@@ -39,6 +39,7 @@
     </header>
     <div id="main" role="main">
 
+		hook location: 
 		<ul id="hook_location"></ul>
 	
     </div>
@@ -51,18 +52,23 @@
   <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/jquery-1.6.2.js"><\/script>')</script>
 
 
   <!-- scripts concatenated and minified via build script -->
-  <script defer src="js/jquery.twitter-hook.js"></script>
+  <script defer src="js/jquery.tweeze.js"></script>
   
   <script type="text/javascript">
   	
 	$(function() {
 		
-		$(".hook_location").tweeze();
+		$("#hook_location").tweeze({
+			usernames : {
+				'from' : ['foo', 'bar'],
+				'to'   : ['hap', 'stance']
+			}
+		});
 		
 	});
 	
