@@ -29,6 +29,27 @@
        Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
        for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
   <!-- <script src="js/libs/modernizr-2.0.6.min.js"></script> -->
+  
+  <style type="text/css">
+  	
+	/* simple styles */
+  	body { font-family: Arial; font-size: 14px; background: #EEEEEE; }
+	pre { font-family: 'Courier New'; background: #CCCCCC; display: inline; padding: 0px 3px; }
+	
+	
+	
+	/* stuff to pull out for the plugin */
+	.box { width: 300px; margin: 20px; float: left; border: 2px solid #CCCCC; border-radius: 5px; }
+  	.box ul { padding-left: 0px; }
+	.box ul li { display: block; padding: 20px; border: 1px solid #CCCCCC; }
+	
+	.tweeze .user { display: block; }
+	.tweeze .text {  }
+	.tweeze .time { display: block; }
+	
+	
+  </style>
+  
 </head>
 
 <body>
@@ -39,8 +60,44 @@
     </header>
     <div id="main" role="main">
 
-		hook location: 
-		<ul id="hook_location"></ul>
+		<h2>jQuery.tweeze.js</h2>
+		
+		<p> A jQuery plugin to help retrieve content from the Twitter Search API. </p>
+		
+		<h3>Features</h3>
+		<ul>
+			<li>Extremely flexible configuration.</li>
+			<li>Pretty dates (thanks <a href="http://ejohn.org/blog/javascript-pretty-date/">John Resig</a>!)</li>
+			<li>Linkified tweets (thanks <a href="http://davidwalsh.name/linkify-twitter-feed">Jeremy Parrish (rrish.org)</a></li>
+		</ul>
+
+		<h3>TODO: stuff that's coming</h3>
+		<ul>
+			<li>Smart filters to avoid triggering Search API complexity requirements.</li>
+			<li>Browser-based caching of tweets via HTML5 LocalStorage (avoids rate limiting).</li>
+			<li>Animations to load in new tweets.</li>
+		</ul>
+		
+		<h3>TODO: stuff that should be in any self-respecting twitter plugin</h3>
+		<ul>
+			<li>showing avatars</li>
+		</ul>
+
+		<div class="box">
+			<h4>Simple Feed</h4>
+			<ul id="hook_1"></ul>
+		</div>
+		
+		<div class="box">
+			<h4>Multi-User Feed</h4>
+			<ul id="hook_2"></ul>
+		</div>
+		
+		<div class="box">
+			<h4>Filtered User Feed</h4>
+			<p> Many more users than the Twitter Search API would allow, so we aggregate with a <pre>#hastag</pre> </p>
+			<ul id="hook_2"></ul>
+		</div>
 	
     </div>
     <footer>
@@ -63,11 +120,11 @@
   	
 	$(function() {
 		
-		$("#hook_location").tweeze({
+		$("#hook_1").tweeze({
 			usernames : {
-				'from' : ['foo', 'bar'],
-				'to'   : ['hap', 'stance']
-			}
+				'from' : ['jQuery'],
+			},
+			show_senders : true
 		});
 		
 	});
