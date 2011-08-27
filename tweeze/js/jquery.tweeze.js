@@ -21,6 +21,7 @@
             linkify			: true,
             show_senders	: false,
 			show_faces		: false,		// does nothing yet
+			search_term		: null,
             usernames : {
             	'from' : [],
             	'to'   : []
@@ -73,7 +74,7 @@
         	// this is also probably one of the DRYest pieces of code i have written in a long time... 
 			// loop through and build the @from and @to params
         	$.each(settings.usernames, function(k, set) {
-        		if (set.length < 3) {
+        		if (set.length < 4) {
         			$.each(set , function(i, name){
     	        		if (i > 0 ) { query_string += "OR+"; }
     	        		query_string += k + ":" + name + "+";
@@ -93,7 +94,11 @@
         	
         	if (typeof settings.hashtag_filter == 'string') {
 				
-				query_string += "#" + settings.hashtag_filter;
+				query_string += "#" + settings.hashtag_filter + '+';
+			}
+			
+			if (typeof settings.search_term == 'string') {
+				query_string += settings.search_term;
 			}
         	
         	console.log(settings.base_url + escape(query_string));

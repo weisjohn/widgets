@@ -34,12 +34,13 @@
   	
 	/* simple styles */
   	body { font-family: Arial; font-size: 14px; background: #EEEEEE; }
-	pre { font-family: 'Courier New'; background: #CCCCCC; display: inline; padding: 0px 3px; }
+	.code { font-family: 'Courier New'; background: #CCCCCC; display: inline; padding: 0px 3px; }
 	
+	.box p { min-height: 60px; }
 	
 	
 	/* stuff to pull out for the plugin */
-	.box { width: 300px; margin: 20px; float: left; border: 2px solid #CCCCC; border-radius: 5px; }
+	.box { width: 350px; margin: 20px; float: left; border: 2px solid #CCCCC; border-radius: 5px; }
   	.box ul { padding-left: 0px; }
 	.box ul li { display: block; padding: 20px; border: 1px solid #CCCCCC; }
 	
@@ -85,18 +86,20 @@
 
 		<div class="box">
 			<h4>Simple Feed</h4>
+			<p>Tweets coming from a single user, that is <span class="code">@twitter</span>.  Usernames are not shown.</p>
 			<ul id="hook_1"></ul>
 		</div>
 		
 		<div class="box">
 			<h4>Multi-User Feed</h4>
+			<p> Multiple users passed into Twitter Search API. (A few developers that I follow.) </p>
 			<ul id="hook_2"></ul>
 		</div>
 		
 		<div class="box">
 			<h4>Filtered User Feed</h4>
-			<p> Many more users than the Twitter Search API would allow, so we aggregate with a <pre>#hastag</pre> </p>
-			<ul id="hook_2"></ul>
+			<p> Many more users than the Twitter Search API would allow, so we search directed to a user <span class="code">@buildguild</span> and then filter. (You could easily use a <span class="code">#hashtag</span> </p>
+			<ul id="hook_3"></ul>
 		</div>
 	
     </div>
@@ -122,10 +125,26 @@
 		
 		$("#hook_1").tweeze({
 			usernames : {
-				'from' : ['jQuery'],
+				'from' : ['twitter'],
+			}
+		});
+		
+		$("#hook_2").tweeze({
+			usernames : {
+				'from' : ['rem', 'paul_irish', 'ajpiano'],
 			},
 			show_senders : true
 		});
+		
+		$("#hook_3").tweeze({
+			usernames : {
+				'from' : [ 'AndrewRocco', 'robtarr', 'weisjohn', 'bencallahan' ]
+			},
+			search_term : 'buildguild',
+			show_senders : true
+		});
+		
+		
 		
 	});
 	
