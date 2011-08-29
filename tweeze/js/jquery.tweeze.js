@@ -35,7 +35,7 @@
         // courtesy of Jeremy Parrish (rrish.org)
         function _linkify(text) {
 
-            return text.replace(/(https?:\/\/\S+)/gi, '<a target="_blank" href="$1">$1</a>').replace(/(^|\s)@(\w+)/g, '$1<a target="_blank" href="http://twitter.com/$2">@$2</a>').replace(/(^|\s)#(\w+)/g, '$1#<a target="_blank" href="http://search.twitter.com/search?q=%23$2">$2</a>');
+            return text.replace(/(https?:\/\/\S+)/gi, '<a target="_blank" href="$1">$1</a>').replace(/(^|\s)@(\w+)/g, '$1<a target="_blank" href="http://twitter.com/$2">@$2</a>').replace(/(^|\s)#(\w+)/g, '#<a target="_blank" href="http://search.twitter.com/search?q=%23$2">$1$2</a>');
         };
 
         /* 
