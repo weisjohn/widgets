@@ -141,7 +141,10 @@
 				'from' : [ 'AndrewRocco', 'robtarr', 'weisjohn', 'bencallahan' ]
 			},
 			search_term : 'buildguild',
-			show_senders : true
+			show_senders : true,
+			on_complete : function() {
+				console.log('tweets retrieved');
+			}
 		});
 		
 		

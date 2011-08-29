@@ -2,7 +2,8 @@
 	Author : John Weis
 	Plugin : Tweeze
 	Purpose: Uses the Search API at Twitter - https://dev.twitter.com/docs/using-search
-
+	Version: 0.1
+	
 	TODO: 
 		implement a since_id store via $.data 
 		handle error messaging
@@ -25,7 +26,9 @@
             usernames : {
             	'from' : [],
             	'to'   : []
-        	}
+        	},
+        	
+        	on_complete : null
 
         };
 
@@ -101,7 +104,6 @@
 				query_string += settings.search_term;
 			}
         	
-        	console.log(settings.base_url + escape(query_string));
         	return settings.base_url + escape(query_string); 
         }
         
@@ -148,7 +150,7 @@
 				dataType : 'jsonp',
 				statusCode : {
 					404 : function() { console.log('file not found') },
-					420 : function() { console.log('increase the chill') },  // TODO: do something with this 
+					420 : function() { console.log('increase the chill') }  // TODO: do something with this 
 				},
 				success : function(data) {
 					
@@ -165,9 +167,7 @@
 							if (i < settings.count) {
 								
 								if (_filter_from(tweet)) {
-									
-									console.log('tweet ');
-									console.dir(tweet);
+
 									
 									// build and attach the tweet to the list
 									var t = $("<li></li>");
@@ -207,6 +207,11 @@
 							
 						});
 						
+					}
+					
+					if (typeof settings.on_complete == 'function') {
+						
+						settings.on_complete();
 					}
 					
 				}
