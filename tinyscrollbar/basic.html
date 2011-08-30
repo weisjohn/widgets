@@ -1,0 +1,185 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Basic jQuery Scrollbar</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
+       Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
+       for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
+  <!-- <script src="js/libs/modernizr-2.0.6.min.js"></script> -->
+  
+  <style type="text/css">
+  	
+	/* simple styles */
+  	body { font-family: Arial; font-size: 14px; background: #EEEEEE; }
+	.code { font-family: 'Courier New'; background: #CCCCCC; display: inline; padding: 0px 3px; }
+	
+	.box p { min-height: 60px; }
+	
+	
+	/* stuff to pull out for the plugin */
+	.viewport { overflow: hidden; position: relative; }
+	.overview { position: absolute; left: 0; top: 0; width: 100%; margin-left: 0px; }
+	.thumb .end, .thumb { background-color: #CCCCCC; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; }
+	
+	
+	
+	
+	
+	
+	
+	
+	.scroll_wrap { overflow: auto; float: right; }
+		.up_button , .down_button { height: 23px; width: 23px; display: block; background-position: center top; background-repeat: no-repeat; }
+		.up_button {
+			background-image: url(data:image/gif;base64,R0lGODlhFwAwAJEAAO/v7wAAAPr6+v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBSaWdodHM9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9yaWdodHMvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wUmlnaHRzOk1hcmtlZD0iRmFsc2UiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0idXVpZDo5QTVBNUI0ODM3OENERTExQjgzMEY1QjI0OTYxNjE5RCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5MUVDNjA3RUMxQzUxMUUwODAxOEFCRTcxNEIxNTJDNCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5MUVDNjA3REMxQzUxMUUwODAxOEFCRTcxNEIxNTJDNCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1QTNBQ0RBM0YyMDY4MTE5NUNBRkZGNDI3RkJBMUY4IiBzdFJlZjpkb2N1bWVudElEPSJ1dWlkOjFFQzA4NkNEQ0Q5MUUwMTE4OUYyQUVFQUI0MEUyMkVBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAAAAAAAsAAAAABcAMAAAAk6cj6nL7Q+jnLTai1nIod8OVmEokYPpoKeXte4Lx/JMO8KN5/rO9/4PDAqHxKLxiNQFkgIQEtQxOp1DajMatN60zK73Cw6Lj4Cy+YxOlwsAOw==);
+ 		}
+		.down_button { 
+			background-image: url(data:image/gif;base64,R0lGODlhFwAwAJEAAO/v7wAAAPr6+v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBSaWdodHM9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9yaWdodHMvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wUmlnaHRzOk1hcmtlZD0iRmFsc2UiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0idXVpZDo5QTVBNUI0ODM3OENERTExQjgzMEY1QjI0OTYxNjE5RCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5MUVDNjA3QUMxQzUxMUUwODAxOEFCRTcxNEIxNTJDNCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5MUVDNjA3OUMxQzUxMUUwODAxOEFCRTcxNEIxNTJDNCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1QTNBQ0RBM0YyMDY4MTE5NUNBRkZGNDI3RkJBMUY4IiBzdFJlZjpkb2N1bWVudElEPSJ1dWlkOjFFQzA4NkNEQ0Q5MUUwMTE4OUYyQUVFQUI0MEUyMkVBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAAAAAAAsAAAAABcAMAAAAk6cj6nL7Q+jnLTai0/YaYfoaZwUhpQ3Vub1Ze4Lx/JM1xOA5/rO48IPDAqHxKLxiEwql8ym8wn1CKVJqsBa3Vy1TVQgyo1Cx+Sy+YxOMwsAOw==);
+		}
+		.up_button:hover { background-position: center -24px; cursor: pointer; }
+		.down_button:hover { background-position: center -25px; cursor: pointer; }
+	.scrollbar { width: 12px; right: 0px; overflow: visible !important; }
+	.track { width: 1px; position: relative; overflow: visible !important; }
+	.thumb { width: 10px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: 6px; overflow: visible !important; }
+	.thumb .end { overflow: hidden; height: 5px; width: 10px; }
+	.disable{ display: none; }
+		
+
+		/* stuff specific to this demo page */
+		#lipsum { height: 272px; width: 300px; clear: both; margin: 0 20px; position: relative; border: 2px solid #666666; float: left; }
+		#lipsum .viewport { width: 270px; height: 268px; }
+		#lipsum .overview { list-style: none; padding-left: 5px; padding-top: 0px; margin-top: 5px; }
+		#lipsum .overview li { border-bottom: 1px dotted #CCC; margin: 5px 0; padding-bottom: 4px; }
+		#lipsum .overview li:last-child { border-bottom: none; }
+		#lipsum .overview li a { font-family: Arial !important; padding-left: 10px; font-size: 12px; display: block; margin-bottom: 2px; cursor: pointer; color: #333333; font-weight: bold; background: #FFF; }
+		 
+		#lipsum .overview li a:hover { text-decoration: none; color: #FF339A; }
+		#lipsum .scrollbar { overflow: visible !important; }
+		#lipsum .track { overflow: visible !important; }
+		#lipsum .thumb { overflow: visible !important; }
+		#lipsum .thumb .end {  }
+	
+	
+  </style>
+  
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+
+    </header>
+    <div id="main" role="main">
+
+		<h2>jQuery.tinyscrollbar.js</h2>
+		
+		<p> NOTE: this is not my plugin, I simply extended the other one from http://www.baijs.nl/tinyscrollbar/ </p>
+		
+		<h3>Features</h3>
+		<ul>
+			<li>Extremely flexible configuration.</li>
+			<li>up and down arrows</li>
+			<li>No external images - all referenced by data URIs</li>
+		</ul>
+
+		<h3>TODO: stuff that's broken</h3>
+		<ul>
+			<li>currently, when the list is to small, it still shows the buttons</li>
+		</ul>
+		
+		<div id="lipsum">
+			<div class="scroll_wrap">
+				<div class="up_button"></div>
+				<div class="scrollbar">
+					<div class="track">
+						<div class="thumb">
+							<div class="end"></div>
+						</div>
+					</div>
+				</div>
+				<div class="down_button"></div>
+			</div>
+			<div class="viewport">
+				<ul class="overview">
+					<li>Suspendisse eu sapien</li> 
+					<li>ut lectus dignissim rutrum</li>
+					<li>vel nec magna. Cras vel nibh est.</li> 
+					<li>Nulla lobortis nisl sed turpis.</li>
+					<li>Suscipit et lacinia tortor sagittis.</li>
+					<li>Nulla rhoncus urna a mauris porta. </li>
+					<li>Nunc euismod, lorem vitae.</li>
+					<li>vel nec magna. Cras vel nibh est.</li> 
+					<li>ut lectus dignissim rutrum</li>
+					<li>Suspendisse eu sapien</li> 
+					<li>ut lectus dignissim rutrum</li>
+					<li>vel nec magna. Cras vel nibh est.</li> 
+					<li>Nulla lobortis nisl sed turpis.</li>
+					<li>Suscipit et lacinia tortor sagittis.</li>
+					<li>Nulla rhoncus urna a mauris porta. </li>
+					<li>Nunc euismod, lorem vitae.</li>
+					<li>vel nec magna. Cras vel nibh est.</li> 
+					<li>ut lectus dignissim rutrum</li>
+					<li>fin.</li>
+				</ul>
+			</div>
+			
+		</div>	
+		
+	
+    </div>
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/jquery-1.6.2.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via build script -->
+  <script defer src="js/jquery.tinyscrollbar-1.65.js"></script>
+  
+  <script type="text/javascript">
+  	
+	$(function() {
+		
+		$("#lipsum").tinyscrollbar({ 'size': 225, 'sizethumb': 75 });
+		
+	});
+	
+  </script>
+  
+  <!-- end scripts -->
+  
+  
+
+</body>
+</html>
