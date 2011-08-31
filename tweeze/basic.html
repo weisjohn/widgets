@@ -98,9 +98,16 @@
 		
 		<div class="box">
 			<h4>Filtered User Feed</h4>
-			<p> Many more users than the Twitter Search API would allow, so we search directed to a user <span class="code">@buildguild</span> and then filter. (You could easily use a <span class="code">#hashtag</span> </p>
+			<p> Many more users than the Twitter Search API would allow, so we search directed to a user <span class="code">@buildguild</span> and then filter. (You could easily use a <span class="code">#hashtag</span>) </p>
 			<ul id="hook_3"></ul>
 		</div>
+	
+		<div class="box">
+			<h4>Multiple requests</h4>
+			<p> Let's say a number of users are spamming on your particular <span class="code">#hashtag</span>.  In this setup, we make a few requests to get a larger number of results. </p>
+			<ul id="hook_4"></ul>
+		</div>
+	
 	
     </div>
     <footer>
@@ -147,6 +154,16 @@
 			}
 		});
 		
+		
+		$("#hook_4").tweeze({
+			usernames : {
+				'from' : ['BamaVSPINK', 'UAPINK', 'PINK_ASU', 'VSPINKUofArk', 'AuburnPINK', 'BinghamptonPINK', 'VSPINKCal', 'CinciPINK', 'CUBuffsLovePINK', 'UF_PINK', 'FAMUVSPINK', 'VSPINKFSU', 'VSPINKUGA', 'GtechPink', 'HUPINKREPS', 'IlliniPINK', 'VSPINK_IU', 'VSPINKuiowa', 'KU_PINK', 'UKVSPINK', 'PinkatUofL', 'PINKLSUTigers', 'VSPINKMichigan', 'MSUPINK', 'PINKMizzou', 'PINK_HUSKERS', 'vspinkNYU', 'OklahomaVSPINK', 'VSPINK_Okstate', 'OleMissPINK', 'OregonPINK', 'oregonstatePINK', 'PINKPSU', 'PITTVSPINK', 'VSPINKatPurdue', 'RUTGERSVSPINK', 'USFPINK', 'SpelmanPINK', 'VSPinkStanford', 'PINKatSU', 'TexasVSPINK', 'AggiePINK', 'TxTechVSPINK', 'UCFPINK', 'VSPINKUCLA', 'UCONNPINK', 'VSPINKumiami', 'VolsLovePINK', 'VSPINKUtes', 'VSPinkUVA', 'vsPINKuw', 'USC_PINK', 'VSPINKVT', 'WazzuPink', 'vspinkwvu', 'VSPINK_SCONNIE']
+			},
+			min_size : 5,
+			rpp 	: 100,
+			search_term : 'PINKReps',
+			show_senders : true
+		});
 		
 		
 	});
