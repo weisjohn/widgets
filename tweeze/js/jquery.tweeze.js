@@ -274,7 +274,7 @@
 		}
 		
 
-        // TODO: create functions such as update and destory - http://docs.jquery.com/Plugins/Authoring#Events
+        // TODO: create functions such as update and destroy - http://docs.jquery.com/Plugins/Authoring#Events
         //// returning a function with the .each maintains chainability - http://docs.jquery.com/Plugins/Authoring#Maintaining_Chainability 
         return this.each(function () {
 
