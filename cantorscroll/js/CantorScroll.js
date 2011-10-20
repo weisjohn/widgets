@@ -4,21 +4,29 @@
  */
 (function(window, $, undefined){
 
+	var instances = 0;
+
     $.cantorscroll = function canscr(options, callback, element){
     
         this.element = $(element);
-        this._create(options, callback);
+        this._create(options, callback, instances++);
         
     };
     
     $.cantorscroll.defaults = {        
    
 		/* default options */
+		can_id : 0, // instance id, helps eventing
 		binder : $(window), // used to cache the selector
+		buffer_px : 0,
 		debug : false,
+		
 		sort_types : [],
 		categories : [],
+		paging_frame_size : 15, // the number of elements that are within a page
+		
 		view_state: {
+			
 			during_ajax : false,
 			invalid_page : false,
 			destroyed : false,
@@ -29,6 +37,7 @@
 			sort_type : "",
 			category : ""
 		},
+		
 		url : ""
     };
     
@@ -39,11 +48,37 @@
          * private methods
          * -------------- 
 		 */
-		_create: function canscr_create(options, callback){ 
 		
-			 // Define options and shorthand
+		_binding : function canscr_binding(binding) {
+			
+			var instance = this,
+				opts = instance.options;
+
+			
+			if (binding == 'unbind') {
+
+                (opts.binder).unbind('smartscroll.canscr.' + opts.can_id);
+
+            } else {
+
+                (opts.binder)[binding]('smartscroll.canscr.' + opts.can_id, function () {
+                    instance.scroll();
+                });
+
+            };
+
+            this._debug('binding', binding);
+			
+		},
+		
+		
+		_create: function canscr_create(options, callback, instance_id){ 
+		
+			// Define options and shorthand
             var opts = this.options = $.extend(true, {}, $.cantorscroll.defaults, options);
 		
+			// recore which instance we have, helps separate out the eventing
+			this.options.can_id = instance_id;
 
 			// create and build the pages_visited tree
 			opts.pages_visited = {};
@@ -55,6 +90,8 @@
 				}
 			}
 			
+			
+			this._binding('bind');
 		},
 		
 		
@@ -68,16 +105,40 @@
 		
 		_near_last_retrieved_page : function canscr_near_last_retrieved_page() {
 			
-			var opts = this.options,
-	        	pixelsFromWindowBottomToBottom 
-					= 0 + $(document).height() - (opts.binder.scrollTop()) - $(window).height();
+			var opts = this.options;
+			
+			
+			
+			// TODO: if the trigger position is beyond the trigger point, trigger
+				
+				// TODO: calculate trigger position
+				var trigger_position = $(window).scrollTop() + $(window).height() + opts.buffer_px;
+					
+				// TODO: calculate trigger point
+			
+			
+			
+			
+			
+			// logic from the infinite scroll... 
+			// pixelsFromWindowBottomToBottom = 0 + $(document).height() - (opts.binder.scrollTop()) - $(window).height();
+			
+			// TODO: find how many items are currently visible, minus the 
+			
+			// TODO: find the current bottom 
 
-			this._debug('math:', pixelsFromWindowBottomToBottom, opts.pixelsFromNavToBottom);
+			this._debug('scroll math:');
+			this._debug('trigger position:', trigger_position);
 
-            // if distance remaining in the scroll (including buffer) is less than the orignal nav to bottom....
-            return (pixelsFromWindowBottomToBottom - opts.bufferPx < opts.pixelsFromNavToBottom);
+            // logic from the infinite scroll
+			// 
+			// if distance remaining in the scroll (including buffer) is less than the orignal nav to bottom....
+            // 
+			// return (pixelsFromWindowBottomToBottom - opts.bufferPx < opts.pixelsFromNavToBottom);
 		},
     
+	
+	
         /* --------------
          * public methods
          * -------------- 
@@ -97,10 +158,12 @@
 		},
 		
 		// Check to see next page is needed
-        scroll: function canscr_scroll() {
+        scroll : function canscr_scroll() {
+			
+			console.log('scroll');
 
             var opts = this.options,
-				state = opts.state;
+				state = opts.view_state;
 
 			if (state.during_ajax || state.invalid_page || state.done || state.destroyed || state.paused) return;
 

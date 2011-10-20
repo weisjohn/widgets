@@ -106,12 +106,16 @@
   	
 	$(function() {
 		
+		// load up with some dummy data
 		function gen_nodes(elem) {
 			for (var i = 0; i < 50; i++) {
+				
+				var color = "#" + (function(h){return new Array(4-h.length).join("0")+h})(Math.floor(Math.random()*4095).toString(16));
 			
 				$("<div></div>")
 					.addClass("cell")
-					.html(((Math.random() * 268435456) | 0).toString(16))
+					.html( color )
+					.css('backgroundColor', color)
 					.appendTo(elem);
 			}
 		}
