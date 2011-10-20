@@ -107,8 +107,8 @@
 	$(function() {
 		
 		// load up with some dummy data
-		function gen_nodes(elem) {
-			for (var i = 0; i < 50; i++) {
+		function gen_nodes(elem, count) {
+			for (var i = 0; i < count; i++) {
 				
 				var color = "#" + (function(h){return new Array(4-h.length).join("0")+h})(Math.floor(Math.random()*4095).toString(16));
 			
@@ -121,7 +121,7 @@
 		}
 		
 		$(".content").each(function() { 
-			gen_nodes(this);
+			gen_nodes(this, 35);
 		});
 		
 		
@@ -130,7 +130,9 @@
 			sort_types : [ 'foo' , 'bar' ],
 			categories : [ 'cat_1', 'cat_2', 'cat_3' ],
 			view_state : { sort_type : 'foo' , category : 'cat_1' },
-			mox_jax : gen_nodes
+			on_load : function(data) {
+				gen_nodes($(".content"),15);
+			}
 		});
 
 		$("#scroll1").cantorscroll('sort', 'foo');

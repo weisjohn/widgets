@@ -21,6 +21,8 @@
 		buffer_px : 0,
 		debug : false,
 		
+		on_load : function() { },
+		
 		sort_types : [],
 		categories : [],
 		paging_frame_size : 15, // the number of elements that are within a page
@@ -64,7 +66,9 @@
                 (opts.binder)[binding]('smartscroll.canscr.' + opts.can_id, function () {
                     instance.scroll();
                 });
-
+	
+				// scroll now just for good measure
+				instance.scroll();
             };
 
             this._debug('binding', binding);
@@ -130,6 +134,9 @@
 				
 					this._debug('children visible:', children_visible);
 				
+					// TODO: calculate and set the current page_cursor
+					state.page_cursor = Math.floor(children_visible / opts.paging_frame_size);
+				
 					// opts.page_visited[state.sort_type][state.category]
 					this._debug('current page:', state.page_cursor);
 				
@@ -142,21 +149,15 @@
 				this._debug('current page visited?', visited_current_page);
 				this._debug('opts.pages_visited[state.sort_type][state.category]', opts.pages_visited[state.sort_type][state.category]);
 				
-				// if we haven't visited this page, we need to retrieve elements
-				// TODO: do this after the ajax call to retrieve more elements
-				// set the current page_visited to be the page we're on
-				// TODO: uncomment this once the page_cursor value is calculated correctly
-				// opts.pages_visited[state.sort_type][state.category] = [state.page_cursor];
+				
+				
+				
+				// if we haven't seen this page before, retrieve it
+				if (!visited_current_page) {
+					
+					this.retrieve(state.page_cursor);
+				}
 			
-			
-			// logic from the infinite scroll... 
-			// pixelsFromWindowBottomToBottom = 0 + $(document).height() - (opts.binder.scrollTop()) - $(window).height();
-			
-			// TODO: find how many items are currently visible, minus the 
-			
-			// TODO: find the current bottom 
-
-			this._debug('scroll math:');
 			this._debug('trigger position:', trigger_position);
 
             // logic from the infinite scroll
@@ -196,12 +197,36 @@
 		// based on current categories / sorts, retrieve the next page 
 		retrieve : function canscr_retrieve() {
 			
+			console.info('retrieving new records');
+			
 			var opts = this.options,
-				state = opts.state;
+				state = opts.view_state;
 			
-			// TODO: mark current filter/sort/page as visited
+			state.during_ajax = true;
 			
-			// TODO: add dummy foo objects?
+			var on_success = function(data) {
+				
+				console.log('in on success');
+				
+				
+				// mark this filter/sort/page in the pages_visited tree as visited
+				opts.pages_visited[state.sort_type][state.category].push( state.page_cursor );
+				
+				console.log('in on success');
+				
+				
+				
+				if ($.isFunction(opts.on_load)) {
+					opts.on_load(data);
+				}
+			 
+			 	state.during_ajax = false;
+			 
+			};
+			
+			
+			// TODO: make the $.ajax call , register the callback , mark out next comment
+			on_success({  });
 			
 		},
 		
