@@ -34,13 +34,13 @@
 		
 	}, function(){
 		
-		load_script("file:///Users/jweis/mysrc/widgets/qr_bookmarklet/js/jquery.qrcode.js/qrcode.js", function() {
+		load_script("http://weisjohn.github.com/widgets/qr_bookmarklet/js/jquery.qrcode.js/qrcode.js", function() {
 			
 			return window.QR8bitByte;
 			
 		}, function() {
 			
-			load_script("file:///Users/jweis/mysrc/widgets/qr_bookmarklet/js/jquery.qrcode.js/jquery.qrcode.js", function(){
+			load_script("http://weisjohn.github.com/widgets/qr_bookmarklet/js/jquery.qrcode.js/jquery.qrcode.js", function(){
 			
 				return $.fn.qrcode;
 				
