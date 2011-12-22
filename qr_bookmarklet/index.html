@@ -12,14 +12,12 @@
        More info: h5bp.com/b/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Basic Twitter Hook</title>
+  <title>QR Bookmarklet</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
   <!-- <link rel="stylesheet" href="css/style.css"> -->
   
@@ -28,7 +26,6 @@
   <!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
        Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
        for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
-  <!-- <script src="js/libs/modernizr-2.0.6.min.js"></script> -->
   
   <style type="text/css">
   	
@@ -44,11 +41,6 @@
   	.box ul { padding-left: 0px; }
 	.box ul li { display: block; padding: 20px; border: 1px solid #CCCCCC; }
 	
-	.tweeze .user { display: block; }
-	.tweeze .text {  }
-	.tweeze .time { display: block; }
-	
-	
   </style>
   
 </head>
@@ -61,54 +53,28 @@
     </header>
     <div id="main" role="main">
 
-		<h2>jQuery.tweeze.js</h2>
+		<h2>QR Bookmarklet</h2>
 		
-		<p> A jQuery plugin to help retrieve content from the Twitter Search API. </p>
+		<p>  </p>
 		
-		<h3>Features</h3>
+		<h3>How to use:</h3>
 		<ul>
-			<li>Extremely flexible configuration.</li>
-			<li>Pretty dates (thanks <a href="http://ejohn.org/blog/javascript-pretty-date/">John Resig</a>!)</li>
-			<li>Linkified tweets (thanks <a href="http://davidwalsh.name/linkify-twitter-feed">Jeremy Parrish (rrish.org)</a></li>
+			<li>So...you're hangin' out with your friends. </li>
+			<li>You've got your phone and you want them to see this cool article / page / post / whatever. </li>
+			<li>Instead of a public recitation of digital poetry comprising of "ache tee tee pee...blah blah dot com"... "pound.. then go down to the bottom"... ugh.</li> 
+			<li>Hit this bookmarklet and generate a QR code that takes your friend straight to the page that you're on. </li>
 		</ul>
 
-		<h3>TODO: stuff that's coming</h3>
+		<h3>How to install:</h3>
 		<ul>
-			<li>Smart filters to avoid triggering Search API complexity requirements.</li>
-			<li>Browser-based caching of tweets via HTML5 LocalStorage (avoids rate limiting).</li>
-			<li>Animations to load in new tweets.</li>
+			<li>Click on this <a href="#~">link</a> (the page won't change in your browser)</li>
+			<li>Add a bookmark for this page.</li>
+			<li>Edit the bookmark and delete everything up to the "#" symbol.</li>
+			<li>You now have a bookmarklet! Yay! You can now click the bookmarklet to share any page you're on.</li>
 		</ul>
 		
-		<h3>TODO: stuff that should be in any self-respecting twitter plugin</h3>
-		<ul>
-			<li>showing avatars</li>
-		</ul>
-
-		<div class="box">
-			<h4>Simple Feed</h4>
-			<p>Tweets coming from a single user, that is <span class="code">@twitter</span>.  Usernames are not shown.</p>
-			<ul id="hook_1"></ul>
-		</div>
+		<div class="box"></div>
 		
-		<div class="box">
-			<h4>Multi-User Feed</h4>
-			<p> Multiple users passed into Twitter Search API. (A few developers that I follow.) </p>
-			<ul id="hook_2"></ul>
-		</div>
-		
-		<div class="box">
-			<h4>Filtered User Feed</h4>
-			<p> Many more users than the Twitter Search API would allow, so we search directed to a user <span class="code">@buildguild</span> and then filter. (You could easily use a <span class="code">#hashtag</span>) </p>
-			<ul id="hook_3"></ul>
-		</div>
-	
-		<div class="box">
-			<h4>Multiple requests</h4>
-			<p> Let's say a number of users are spamming on your particular <span class="code">#hashtag</span>.  In this setup, we make a few requests to get a larger number of results. </p>
-			<ul id="hook_4"></ul>
-		</div>
-	
-	
     </div>
     <footer>
 
@@ -124,51 +90,9 @@
 
 
   <!-- scripts concatenated and minified via build script -->
-  <script defer src="js/jquery.tweeze.js"></script>
+  <script defer src="js/qr_bookmarklet.js"></script>
   
-  <script type="text/javascript">
-  	
-	$(function() {
-		
-		$("#hook_1").tweeze({
-			usernames : {
-				'from' : ['twitter'],
-			}
-		});
-		
-		$("#hook_2").tweeze({
-			usernames : {
-				'from' : ['rem', 'paul_irish', 'ajpiano'],
-			},
-			show_senders : true
-		});
-		
-		$("#hook_3").tweeze({
-			usernames : {
-				'from' : [ 'AndrewRocco', 'robtarr', 'weisjohn', 'bencallahan' ]
-			},
-			search_term : 'buildguild',
-			show_senders : true,
-			on_complete : function() {
-				console.log('tweets retrieved');
-			}
-		});
-		
-		
-		$("#hook_4").tweeze({
-			usernames : {
-				'from' : ['BamaVSPINK', 'UAPINK', 'PINK_ASU', 'VSPINKUofArk', 'AuburnPINK', 'BinghamptonPINK', 'VSPINKCal', 'CinciPINK', 'CUBuffsLovePINK', 'UF_PINK', 'FAMUVSPINK', 'VSPINKFSU', 'VSPINKUGA', 'GtechPink', 'HUPINKREPS', 'IlliniPINK', 'VSPINK_IU', 'VSPINKuiowa', 'KU_PINK', 'UKVSPINK', 'PinkatUofL', 'PINKLSUTigers', 'VSPINKMichigan', 'MSUPINK', 'PINKMizzou', 'PINK_HUSKERS', 'vspinkNYU', 'OklahomaVSPINK', 'VSPINK_Okstate', 'OleMissPINK', 'OregonPINK', 'oregonstatePINK', 'PINKPSU', 'PITTVSPINK', 'VSPINKatPurdue', 'RUTGERSVSPINK', 'USFPINK', 'SpelmanPINK', 'VSPinkStanford', 'PINKatSU', 'TexasVSPINK', 'AggiePINK', 'TxTechVSPINK', 'UCFPINK', 'VSPINKUCLA', 'UCONNPINK', 'VSPINKumiami', 'VolsLovePINK', 'VSPINKUtes', 'VSPinkUVA', 'vsPINKuw', 'USC_PINK', 'VSPINKVT', 'WazzuPink', 'vspinkwvu', 'VSPINK_SCONNIE']
-			},
-			min_size : 5,
-			rpp 	: 100,
-			search_term : 'PINKReps',
-			show_senders : true
-		});
-		
-		
-	});
-	
-  </script>
+  <script type="text/javascript"></script>
   
   <!-- end scripts -->
   
