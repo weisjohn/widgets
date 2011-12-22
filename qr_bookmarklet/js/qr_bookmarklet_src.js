@@ -24,6 +24,8 @@
 
 			})();
 			
+		} else {
+			on_asset_load();
 		}
 
 	}
