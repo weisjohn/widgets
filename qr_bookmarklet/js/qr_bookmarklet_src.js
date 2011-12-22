@@ -55,8 +55,8 @@
 						"top" : "0",
 						"border" : "20px solid #FFFFFF"
 					}).qrcode({
-						width: 280,
-						height: 280,
+						width: 256,
+						height: 256,
 						text : location.href,
 						correctLevel : QRErrorCorrectLevel.L
 					}).append(
