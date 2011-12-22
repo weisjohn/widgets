@@ -7,7 +7,7 @@
 	
 		if (!test() ){
 			
-			var s=document.createElement('script');
+			var s = document.createElement('script');
 			s.setAttribute('src',src);
 			document.getElementsByTagName('body')[0].appendChild(s);
 
@@ -46,8 +46,39 @@
 				return $.fn.qrcode;
 				
 			}, function() {
+				
 			
-				console.log('all assetts loaded');
+				// create DOM element for jQuery plugin authoring and position it on the screen
+					// 
+				$("<div></div>")
+					.appendTo("body")
+					.css({ 
+						position: "absolute", 
+						"top" : "0",
+						"border" : "20px solid #FFFFFF"
+					}).qrcode({
+						width: 280,
+						height: 280,
+						text : location.href,
+						correctLevel : QRErrorCorrectLevel.L
+					}).append(
+						$("<a></a>")
+							.html("close")
+							.attr("href", "#")
+							.css({ 
+								"background" : "#CCCCCC",
+								"display" : "block",
+								"textAlign" : "center",
+								"textDecoration" : "none",
+								"fontSize" : "24px",
+								"color" : "black",
+								"padding" : "6px"
+							}).on("click", function(){
+								$(this).parent().remove();
+							})
+					);
+					
+				// TODO: add a close button
 				
 			});
 			
