@@ -1,1 +1,111 @@
-qr_bookmarklet
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>QR Bookmarklet</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
+       Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
+       for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
+  
+  <style type="text/css">
+  	
+	/* simple styles */
+  	body { font-family: Arial; font-size: 14px; background: #EEEEEE; }
+	.code { font-family: 'Courier New'; background: #CCCCCC; display: inline; padding: 0px 3px; }
+	
+	.box p { min-height: 60px; }
+	
+	
+	/* stuff to pull out for the plugin */
+	.box { width: 350px; margin: 20px; float: left; border: 2px solid #CCCCC; border-radius: 5px; }
+  	.box ul { padding-left: 0px; }
+	.box ul li { display: block; padding: 20px; border: 1px solid #CCCCCC; }
+	
+  </style>
+  
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+
+    </header>
+    <div id="main" role="main">
+
+		<h2>QR Bookmarklet</h2>
+		
+		<p>  </p>
+		
+		<h3>How to use:</h3>
+		<ul>
+			<li>So...you're hangin' out with your friends. </li>
+			<li>You've got your phone and you want them to see this cool article / page / post / whatever. </li>
+			<li>Instead of a public recitation of digital poetry comprising of "ache tee tee pee...blah blah dot com"... "pound.. then go down to the bottom"... ugh.</li> 
+			<li>Hit this bookmarklet and generate a QR code that takes your friend straight to the page that you're on. </li>
+		</ul>
+
+		<h3>How to install:</h3>
+		<ul>
+			<li>Click on this <a href='#javascript:(function(){function a(d,f,e){if(!f()){var c=document.createElement("script");c.setAttribute("src",d);document.getElementsByTagName("body")[0].appendChild(c);(function b(){setTimeout(function(){if(f()){e()}else{b()}},10)})()}}a("http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js",function(){return window.jQuery},function(){a("file:///Users/jweis/mysrc/widgets/qr_bookmarklet/js/jquery.qrcode.js/qrcode.js",function(){return window.QR8bitByte},function(){a("file:///Users/jweis/mysrc/widgets/qr_bookmarklet/js/jquery.qrcode.js/jquery.qrcode.js",function(){return $.fn.qrcode},function(){$("<div></div>").appendTo("body").css({position:"absolute",top:"0",border:"20px solid #FFFFFF"}).qrcode({width:280,height:280,text:location.href,correctLevel:QRErrorCorrectLevel.L}).append($("<a></a>").html("close").attr("href","#").css({background:"#CCCCCC",display:"block",textAlign:"center",textDecoration:"none",fontSize:"24px",color:"black",padding:"6px"}).on("click",function(){$(this).parent().remove()}))})})})})();'>link</a> (the page won't change in your browser)</li>
+			<li>Add a bookmark for this page.</li>
+			<li>Edit the bookmark and delete everything up to and including the "#" symbol.</li>
+			<li>You now have a bookmarklet! Yay! You can now click the bookmarklet to share any page that you're on.</li>
+		</ul>
+		
+		<h3>Try me:</h3>
+		<ul>
+			<li>To see it in action: <a href="#" onclick="gencode()">click here</a></li>
+		</ul>
+		
+		<h3>Credits:</h3>
+		<ul>
+			<li><a href="http://jetienne.com/" target="_blank">Jerome Etienne</a> for the awesome <a href="https://github.com/jeromeetienne/jquery-qrcode">jQuery QR Code Plugin</a></li>
+			<li><a href="http://www.d-project.com/qrcode/index.html" target="_blank">Kazuhiko Arase</a> for the heavy lifting of generating the QR Code. <br /> (QR Code is registered trademark of DENSO WAVE INCORPORATED.)</li>
+		</ul>
+		
+		<div class="box"></div>
+		
+    </div>
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <!-- 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  	<script>window.jQuery || document.write('<script src="js/jquery-1.6.2.js"><\/script>')</script>
+  -->
+
+  <!-- scripts concatenated and minified via build script -->
+  <script src="js/qr_bookmarklet_src.js"></script>
+  
+  <!-- end scripts -->
+  
+
+</body>
+</html>
