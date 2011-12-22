@@ -1,8 +1,7 @@
 
-// SEAF
+
 (function() {
 	
-	// very crude script loader
 	function load_script(src, test, on_asset_load){
 	
 		if (!test() ){
@@ -47,9 +46,8 @@
 				
 			}, function() {
 				
-			
-				// create DOM element for jQuery plugin authoring and position it on the screen
-					// 
+				window.gencode = function() {
+					
 				$("<div></div>")
 					.appendTo("body")
 					.css({ 
@@ -77,8 +75,10 @@
 								$(this).parent().remove();
 							})
 					);
-					
-				// TODO: add a close button
+				
+				}
+				
+				// gencode();
 				
 			});
 			
