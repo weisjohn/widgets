@@ -53,7 +53,8 @@
 					.css({ 
 						position: "absolute", 
 						"top" : "0",
-						"border" : "20px solid #FFFFFF"
+						"left" : "0",
+						"border" : "18px solid #FFFFFF"
 					}).qrcode({
 						width: 256,
 						height: 256,
