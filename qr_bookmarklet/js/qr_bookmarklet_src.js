@@ -34,13 +34,13 @@
 		
 	}, function(){
 		
-		load_script("file:///Users/jweis/mysrc/widgets/qr_bookmarklet/js/jquery.qrcode.js/qrcode.js", function() {
+		load_script("http://weisjohn.github.com/widgets/qr_bookmarklet/js/jquery.qrcode.js/qrcode.js", function() {
 			
 			return window.QR8bitByte;
 			
 		}, function() {
 			
-			load_script("file:///Users/jweis/mysrc/widgets/qr_bookmarklet/js/jquery.qrcode.js/jquery.qrcode.js", function(){
+			load_script("http://weisjohn.github.com/widgets/qr_bookmarklet/js/jquery.qrcode.js/jquery.qrcode.js", function(){
 			
 				return $.fn.qrcode;
 				
@@ -53,10 +53,11 @@
 					.css({ 
 						position: "absolute", 
 						"top" : "0",
-						"border" : "20px solid #FFFFFF"
+						"left" : "0",
+						"border" : "18px solid #FFFFFF"
 					}).qrcode({
-						width: 280,
-						height: 280,
+						width: 256,
+						height: 256,
 						text : location.href,
 						correctLevel : QRErrorCorrectLevel.L
 					}).append(
