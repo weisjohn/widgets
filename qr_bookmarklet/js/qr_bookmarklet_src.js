@@ -53,10 +53,11 @@
 				$("<div></div>")
 					.appendTo("body")
 					.css({ 
-						position: "absolute", 
+						"position": "absolute", 
 						"top" : "0",
 						"left" : "0",
-						"border" : "18px solid #FFFFFF"
+						"border" : "18px solid #FFFFFF",
+						"zIndex" : "2147483646"
 					}).qrcode({
 						width: 256,
 						height: 256,
