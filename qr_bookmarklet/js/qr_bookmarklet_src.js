@@ -44,13 +44,13 @@
 			
 			load_script("http://weisjohn.github.com/widgets/qr_bookmarklet/js/jquery.qrcode.js/jquery.qrcode.js", function(){
 			
-				return $.fn.qrcode;
+				return jQuery.fn.qrcode;
 				
 			}, function() {
 				
 				window.gencode = function() {
 					
-				$("<div></div>")
+				jQuery("<div></div>")
 					.appendTo("body")
 					.css({ 
 						position: "absolute", 
@@ -63,7 +63,7 @@
 						text : location.href,
 						correctLevel : QRErrorCorrectLevel.L
 					}).append(
-						$("<a></a>")
+						jQuery("<a></a>")
 							.html("close")
 							.attr("href", "#")
 							.css({ 
@@ -76,7 +76,7 @@
 								"padding" : "6px"
 								"height" : "28px"
 							}).click(function(){
-								$(this).parent().remove();
+								jQuery(this).parent().remove();
 							})
 					);
 				

@@ -44,26 +44,27 @@
 			
 			load_script("http://weisjohn.github.com/widgets/qr_bookmarklet/js/jquery.qrcode.js/jquery.qrcode.js", function(){
 			
-				return $.fn.qrcode;
+				return jQuery.fn.qrcode;
 				
 			}, function() {
 				
 				window.gencode = function() {
 					
-				$("<div></div>")
+				jQuery("<div></div>")
 					.appendTo("body")
 					.css({ 
-						position: "absolute", 
+						"position": "absolute", 
 						"top" : "0",
 						"left" : "0",
-						"border" : "18px solid #FFFFFF"
+						"border" : "18px solid #FFFFFF",
+						"zIndex" : "2147483645"
 					}).qrcode({
 						width: 256,
 						height: 256,
 						text : location.href,
 						correctLevel : QRErrorCorrectLevel.L
 					}).append(
-						$("<a></a>")
+						jQuery("<a></a>")
 							.html("close")
 							.attr("href", "#")
 							.css({ 
@@ -73,10 +74,10 @@
 								"textDecoration" : "none",
 								"fontSize" : "24px",
 								"color" : "black",
-								"padding" : "6px",
+								"padding" : "6px"
 								"height" : "28px"
 							}).click(function(){
-								$(this).parent().remove();
+								jQuery(this).parent().remove();
 							})
 					);
 				
