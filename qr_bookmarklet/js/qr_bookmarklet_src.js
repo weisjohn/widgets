@@ -74,6 +74,7 @@
 								"fontSize" : "24px",
 								"color" : "black",
 								"padding" : "6px"
+								"height" : "28px"
 							}).on("click", function(){
 								$(this).parent().remove();
 							})
