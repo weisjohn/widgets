@@ -75,7 +75,7 @@
 								"color" : "black",
 								"padding" : "6px"
 								"height" : "28px"
-							}).on("click", function(){
+							}).click(function(){
 								$(this).parent().remove();
 							})
 					);
