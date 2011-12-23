@@ -24,6 +24,8 @@
 
 			})();
 			
+		} else {
+			on_asset_load();
 		}
 
 	}
@@ -72,7 +74,8 @@
 								"fontSize" : "24px",
 								"color" : "black",
 								"padding" : "6px"
-							}).on("click", function(){
+								"height" : "28px"
+							}).click(function(){
 								$(this).parent().remove();
 							})
 					);
