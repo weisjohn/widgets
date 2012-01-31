@@ -24,7 +24,7 @@
 	function animator(elem, duration, property, callback) {
 
 		// this line could be better...
-		duration = (typeof duration == "undefined") ? duration : 1000;
+		duration = (typeof duration == "undefined") ? 1000 : duration;
 		var start = (new Date).getTime(), finish = start+duration;
 		
 		// create a new window
@@ -34,21 +34,26 @@
 			"width=" + window.outerWidth + "," + "height=" + window.outerHeight
 		);
 		
+		var init_width = window.outerWidth;
+		
 		// animation loop
 		var interval = setInterval(function() { 
 			var time = (new Date).getTime();
 			var pos = (time > finish) ? 1 : (time-start)/duration;
 			
+			// calculate the new width
+			
+			
 			// resize the new window
-			w.resizeTo(window.outerWidth - (window.outerWidth * pos), w.outerHeight);
+			w.resizeTo(init_width - (init_width * pos), w.outerHeight);
 			if (time > finish) clearInterval(interval);
-		}, 1);
+		}, 250);
 	}
 
 	listen("load", window, function() {
 
 		if (location.href.lastIndexOf("#resize") > 0) {
-			animator(window, 8000);			
+			animator(window, 4250);			
 		}
 
 
