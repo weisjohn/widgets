@@ -1,0 +1,108 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Browser Resizer</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
+       Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
+       for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
+  
+  <style type="text/css">
+  	
+	/* simple styles */
+  	body { font-family: Arial; font-size: 14px; background: #EEEEEE; }
+	.code , code { font-family: 'Courier New'; background: #CCCCCC; display: inline; padding: 0px 3px; }
+	
+	.box { width: 80%; margin: 5%; border: 2px solid #CCCCCC; padding: 5%; font-size: 36px; }
+	.box p { min-height: 60px; }
+	
+	
+	/* MQs so that we can see this thing working */
+	#mq:after { display:block; content: "<280px"; }
+	@media only screen and (min-width: 280px) {  #mq:after { content : "280px"; } }
+	@media only screen and (min-width: 360px) {  #mq:after { content : "360px"; } }
+	@media only screen and (min-width: 480px) {  #mq:after { content : "480px"; } }
+	@media only screen and (min-width: 500px) {  #mq:after { content : "500px"; } }
+	@media only screen and (min-width: 560px) {  #mq:after { content : "560px"; } }
+	@media only screen and (min-width: 760px) {  #mq:after { content : "760px"; } }
+	@media only screen and (min-width: 900px) {  #mq:after { content : "900px"; } }
+	@media only screen and (min-width: 960px) {  #mq:after { content : "960px"; } }	
+	@media only screen and (min-width: 1024px) { #mq:after { content : "1024px"; } }	
+	
+  </style>
+  
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+
+    </header>
+    <div id="main" role="main">
+
+		<h2>Browser Resizer</h2>
+		
+		<p> This helps test when Media Queries trigger on and off so that I don't have to constantly manually resize the browser as I'm working on Reponsive Web Designs.</p>
+		
+		<div class="box">
+			<div id="mq"></div>
+		</div>
+		
+		<h3>Features:</h3>
+		<ul>
+			<li> Resizes the browser from maximum to minimum width and back again. </li>
+			<li> The resizing takes place over a set amount of time so that you can "see" the design respond. </li>
+		</ul>
+		
+		<h3>How to install (desktop):</h3>
+		<ul>
+			<li>Drag this <a href="javascript:(function(){var%20jselem=document.createElement('SCRIPT');jselem.type='text/javascript';jselem.src='http://weisjohn.github.com/widgets/qr_bookmarklet/js/qr_bookmarklet.js';document.getElementsByTagName('body')[0].appendChild(jselem);})();">QR</a> link to your bookmarks bar.</li>
+			<li>You now have a bookmarklet! Yay! You can now click the bookmarklet to generate a QR Code for any page that you're on.</li>
+		</ul>
+		
+
+		<h3>How to install (mobile):</h3>
+		<ul>
+			<li>Click on this <a href="#javascript:(function(){jselem=document.createElement('SCRIPT');jselem.type='text/javascript';jselem.src='http://weisjohn.github.com/widgets/qr_bookmarklet/js/qr_bookmarklet.js';document.getElementsByTagName('body')[0].appendChild(jselem);})();">link</a> (the page won't change in your browser)</li>
+			<li>Add a bookmark for this page.</li>
+			<li>Edit the bookmark and delete everything up to and including the "#" symbol.</li>
+			<li>You now have a bookmarklet! Yay! You can now click the bookmarklet to share any page that you're on.</li>
+		</ul>
+		
+		
+		
+    </div>
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+  <!-- scripts concatenated and minified via build script -->
+  <script src="js/browser-resizer.js"></script>
+  
+  <!-- end scripts -->
+  
+
+</body>
+</html>
