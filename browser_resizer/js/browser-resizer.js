@@ -39,21 +39,37 @@
 		// animation loop
 		var interval = setInterval(function() { 
 			var time = (new Date).getTime();
-			var pos = (time > finish) ? 1 : (time-start)/duration;
+
+			// what's the position?
+			var pos = (time > finish) ? 1.00 : (time-start) / duration;
 			
-			// calculate the new width
-			
+			// calculate widths
+						
+			// var width = Math.pow( (pos - 0.5) * init_width, 2);
+			var sine 		= init_width * (Math.sin( Math.PI * pos * 1.00 ));
+			var linear	 	= init_width - (init_width * pos);
+			var hyperbolic 	= init_width * Math.abs( (Math.pow( (pos) , 2) - 0.5) * 2);
+			//console.log("pos", Math.PI * pos)
+			console.log("hyperbolic width", hyperbolic);
 			
 			// resize the new window
-			w.resizeTo(init_width - (init_width * pos), w.outerHeight);
-			if (time > finish) clearInterval(interval);
-		}, 250);
+			// linear width
+			// w.resizeTo(init_width - (init_width * pos), w.outerHeight);
+			
+			// sine based width
+			w.resizeTo( linear , w.outerHeight );
+			
+			if (time > finish) {
+				clearInterval(interval);
+				console.log('finished');
+			}
+		}, 500);
 	}
 
 	listen("load", window, function() {
 
 		if (location.href.lastIndexOf("#resize") > 0) {
-			animator(window, 4250);			
+			animator(window, 6000);			
 		}
 
 
