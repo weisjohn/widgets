@@ -96,11 +96,13 @@
 			<ul id="hook_2"></ul>
 		</div>
 		
+		<!-- 
 		<div class="box">
 			<h4>Filtered User Feed</h4>
-			<p> Many more users than the Twitter Search API would allow, so we search directed to a user <span class="code">@buildguild</span> and then filter. (You could easily use a <span class="code">#hashtag</span>) </p>
+			<p> Many more users than the Twitter Search API would allow, so we search directed to a user <span class="code">@RWD</span> and then filter. (You could easily use a <span class="code">#hashtag</span>) </p>
 			<ul id="hook_3"></ul>
 		</div>
+		-->
 	
 		<div class="box">
 			<h4>Multiple requests</h4>
@@ -145,9 +147,9 @@
 		
 		$("#hook_3").tweeze({
 			usernames : {
-				'from' : [ 'AndrewRocco', 'robtarr', 'weisjohn', 'bencallahan' ]
+				'from' : [ 'RWD', 'bdconf', 'brad_frost', 'smashingmag' ]
 			},
-			search_term : 'buildguild',
+			search_term : 'RWD',
 			show_senders : true,
 			on_complete : function() {
 				console.log('tweets retrieved');
