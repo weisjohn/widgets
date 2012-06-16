@@ -258,7 +258,7 @@
 						.attr('href', 'http://twitter.com/' + tweet.from_user + '/statuses/' + tweet.id_str)
 						.html( _prettyDate(tweet.created_at) )
 						.appendTo(t);
-						
+
 					t.appendTo(_wrapper);
 					
 				}
