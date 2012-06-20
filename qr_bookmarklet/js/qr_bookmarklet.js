@@ -53,17 +53,17 @@
 				jQuery("<div></div>")
 					.appendTo("body")
 					.css({ 
-						"position": "absolute", 
+						position: "absolute", 
 						"top" : "0",
 						"left" : "0",
-						"border" : "18px solid #FFFFFF",
-						"zIndex" : "2147483645"
+						"border" : "18px solid #FFFFFF"
 					}).qrcode({
 						width: 256,
 						height: 256,
 						text : location.href,
 						correctLevel : QRErrorCorrectLevel.L
 					}).append(
+
 						jQuery("<a></a>")
 							.html("close")
 							.attr("href", "#")
@@ -83,7 +83,7 @@
 				
 				}
 				
-				gencode();
+				// gencode();
 				
 			});
 			

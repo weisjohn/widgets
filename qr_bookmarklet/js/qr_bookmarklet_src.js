@@ -63,6 +63,7 @@
 						text : location.href,
 						correctLevel : QRErrorCorrectLevel.L
 					}).append(
+
 						jQuery("<a></a>")
 							.html("close")
 							.attr("href", "#")
