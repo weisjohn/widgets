@@ -49,11 +49,18 @@
 			}, function() {
 				
 				window.gencode = function() {
+
+					// This fix addresses an iOS bug, so return early if the UA claims it's something else.
+					var positioning = "fixed";
+					var ua = navigator.userAgent;
+						if( !( /iPhone|iPad|iPod/.test( navigator.platform ) && /OS [1-5]_[0-9_]* like Mac OS X/i.test(ua) && ua.indexOf( "AppleWebKit" ) > -1 ) ){
+						positioning = "absolute";
+					}
 					
 				jQuery("<div></div>")
 					.appendTo("body")
 					.css({ 
-						"position": "fixed", 
+						"position": positioning, 
 						"top" : "0",
 						"left" : "0",
 						"border" : "18px solid #FFFFFF"
