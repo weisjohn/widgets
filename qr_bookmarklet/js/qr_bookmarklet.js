@@ -53,7 +53,7 @@
 				jQuery("<div></div>")
 					.appendTo("body")
 					.css({ 
-						position: "absolute", 
+						position: "fixed", 
 						"top" : "0",
 						"left" : "0",
 						"border" : "18px solid #FFFFFF"
