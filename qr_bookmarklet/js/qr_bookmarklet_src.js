@@ -74,7 +74,7 @@
 								"textDecoration" : "none",
 								"fontSize" : "24px",
 								"color" : "black",
-								"padding" : "6px"
+								"padding" : "6px",
 								"height" : "28px"
 							}).click(function(){
 								jQuery(this).parent().remove();

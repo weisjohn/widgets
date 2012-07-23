@@ -30,7 +30,7 @@
 
 	}
 	
-	load_script("http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js", function(){
+	load_script("http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", function(){
 
 		return window.jQuery;
 		
@@ -53,7 +53,7 @@
 				jQuery("<div></div>")
 					.appendTo("body")
 					.css({ 
-						position: "fixed", 
+						"position": "fixed", 
 						"top" : "0",
 						"left" : "0",
 						"border" : "18px solid #FFFFFF"
@@ -74,7 +74,7 @@
 								"textDecoration" : "none",
 								"fontSize" : "24px",
 								"color" : "black",
-								"padding" : "6px"
+								"padding" : "6px",
 								"height" : "28px"
 							}).click(function(){
 								jQuery(this).parent().remove();
