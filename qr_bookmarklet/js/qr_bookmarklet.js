@@ -30,7 +30,7 @@
 
 	}
 	
-	load_script("http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", function(){
+	load_script("http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js", function(){
 
 		return window.jQuery;
 		
