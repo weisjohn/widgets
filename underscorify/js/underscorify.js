@@ -34,7 +34,7 @@
 	}
 	getScript('http://documentcloud.github.com/underscore/underscore-min.js', function () {
 		if (typeof _ == 'undefined') {
-			msg = 'Sorry, but Underscore wasn\'t able to load';
+			msg = 'Sorry, but Underscore wasn not able to load';
 		} else {
 			msg = 'This page is now Underscorified with v' + _.VERSION;
 			if (otherlib) {
@@ -50,6 +50,6 @@
 		b.appendChild(el);
 		window.setTimeout(function () {
 			b.removeChild(el);
-		}, 2500);
+		}, 3000);
 	}
 })();
