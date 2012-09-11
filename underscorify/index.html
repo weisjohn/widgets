@@ -43,6 +43,22 @@
 	.box ul li { display: block; padding: 20px; border: 1px solid #CCCCCC; }
 	
   </style>
+
+  <script>
+  	function getScript(url, success) {
+		var script = document.createElement('script');
+		script.src = url;
+		var head = document.getElementsByTagName('head')[0],
+			done = false;
+		script.onload = script.onreadystatechange = function () {
+			if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+				done = true;
+				success();
+			}
+		};
+		head.appendChild(script);
+	}
+  </script>
   
 </head>
 
@@ -64,15 +80,15 @@
 			<li>Click the bookmarklet to insert Underscore.js into the page context.</li>
 		</ul>
 		
-		<h3>How to install (desktop):</h3>
+		<h3>How to install:</h3>
 		<ul>
-			<li>Drag this <a href="javascript:(function(){var%20jselem=document.createElement('SCRIPT');jselem.type='text/javascript';jselem.src='http://weisjohn.github.com/widgets/qr_bookmarklet/js/qr_bookmarklet.js';document.getElementsByTagName('body')[0].appendChild(jselem);})();">QR</a> link to your bookmarks bar.</li>
-			<li>You now have a bookmarklet! Yay! You can now click the bookmarklet to generate a QR Code for any page that you're on.</li>
+			<li>Drag this <a href="javascript:(function(){var%20jselem=document.createElement('SCRIPT');jselem.type='text/javascript';jselem.src='http://weisjohn.github.com/widgets/qr_bookmarklet/js/qr_bookmarklet.js';document.getElementsByTagName('body')[0].appendChild(jselem);})();">Underscorify</a> link to your bookmarks bar.</li>
+			<li>You now have a bookmarklet! Yay! You can now click the bookmarklet to insert Underscore into any page you're using.</li>
 		</ul>
 		
 		<h3>Try me:</h3>
 		<ul>
-			<li>To see it in action: <a href="#" onclick="gencode()">click here</a></li>
+			<li>To see it in action: <a href="#" onclick="getScript('js/underscorify.js')">click here</a></li>
 		</ul>
 		
 		<h3>Credits:</h3>
@@ -88,18 +104,6 @@
     </footer>
   </div> <!--! end of #container -->
 
-
-  <!-- JavaScript at the bottom for fast page loading -->
-
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <!-- 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  	<script>window.jQuery || document.write('<script src="js/jquery-1.6.2.js"><\/script>')</script>
-  -->
-
-  <!-- scripts concatenated and minified via build script -->
-  <script src="js/qr_bookmarklet_src.js"></script>
-  
   <!-- end scripts -->
   
 

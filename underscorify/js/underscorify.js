@@ -1,4 +1,4 @@
-javascript: (function () {
+(function () {
 	var el = document.createElement('div'),
 		b = document.getElementsByTagName('body')[0];
 	otherlib = false, msg = '';
@@ -50,6 +50,6 @@ javascript: (function () {
 		b.appendChild(el);
 		window.setTimeout(function () {
 			b.removeChild(el);
-		}, 25000);
+		}, 2500);
 	}
 })();
