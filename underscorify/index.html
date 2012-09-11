@@ -1,0 +1,107 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Underscorify</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
+       Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
+       for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
+  
+
+  <style type="text/css">
+  	
+	/* simple styles */
+  	body { font-family: Arial; font-size: 14px; background: #EEEEEE; }
+	.code { font-family: 'Courier New'; background: #CCCCCC; display: inline; padding: 0px 3px; }
+	
+	.box p { min-height: 60px; }
+	
+	
+	/* stuff to pull out for the plugin */
+	.box { width: 350px; margin: 20px; float: left; border: 2px solid #CCCCC; border-radius: 5px; }
+  	.box ul { padding-left: 0px; }
+	.box ul li { display: block; padding: 20px; border: 1px solid #CCCCCC; }
+	
+  </style>
+  
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+
+    </header>
+    <div id="main" role="main">
+
+		<h2>Underscorify</h2>
+		
+		<p>  </p>
+		
+		<h3>How to use:</h3>
+		<ul>
+			<li>Install the bookmarklet by dragging to your bookmarks bar.</li>
+			<li>Click the bookmarklet to insert Underscore.js into the page context.</li>
+		</ul>
+		
+		<h3>How to install (desktop):</h3>
+		<ul>
+			<li>Drag this <a href="javascript:(function(){var%20jselem=document.createElement('SCRIPT');jselem.type='text/javascript';jselem.src='http://weisjohn.github.com/widgets/qr_bookmarklet/js/qr_bookmarklet.js';document.getElementsByTagName('body')[0].appendChild(jselem);})();">QR</a> link to your bookmarks bar.</li>
+			<li>You now have a bookmarklet! Yay! You can now click the bookmarklet to generate a QR Code for any page that you're on.</li>
+		</ul>
+		
+		<h3>Try me:</h3>
+		<ul>
+			<li>To see it in action: <a href="#" onclick="gencode()">click here</a></li>
+		</ul>
+		
+		<h3>Credits:</h3>
+		<ul>
+			<li><a href="https://twitter.com/kswedberg" target="_blank">Karl Swedberg</a> for the awesome <a target="_blank" href="http://www.learningjquery.com/2006/12/jquerify-bookmarklet">jQuerify bookmarklet </a>.
+		</ul>
+		
+		<div class="box"></div>
+		
+    </div>
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <!-- 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  	<script>window.jQuery || document.write('<script src="js/jquery-1.6.2.js"><\/script>')</script>
+  -->
+
+  <!-- scripts concatenated and minified via build script -->
+  <script src="js/qr_bookmarklet_src.js"></script>
+  
+  <!-- end scripts -->
+  
+
+</body>
+</html>
