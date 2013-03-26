@@ -60,7 +60,8 @@
 				jQuery("<div></div>")
 					.appendTo("body")
 					.css({ 
-						"position": positioning, 
+						"position": positioning,
+						"z-index" : "16777271", // http://www.puidokas.com/max-z-index/
 						"top" : "0",
 						"left" : "0",
 						"border" : "18px solid #FFFFFF"
