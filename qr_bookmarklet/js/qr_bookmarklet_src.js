@@ -50,7 +50,7 @@
 				
 				window.gencode = function() {
 					
-				// This fix addresses an iOS bug, so return early if the UA claims it's something else.
+					// This fix addresses an iOS bug, so return early if the UA claims it's something else.
 					var positioning = "fixed";
 					var ua = navigator.userAgent;
 						if( ( /iPhone|iPad|iPod/.test( navigator.platform ) && /OS [1-5]_[0-9_]* like Mac OS X/i.test(ua) && ua.indexOf( "AppleWebKit" ) > -1 ) ){
@@ -61,6 +61,7 @@
 					.appendTo("body")
 					.css({ 
 						"position": positioning, 
+						"z-index" : "16777271", // http://www.puidokas.com/max-z-index/
 						"top" : "0",
 						"left" : "0",
 						"border" : "18px solid #FFFFFF"
