@@ -20,30 +20,30 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <!-- <link rel="stylesheet" href="css/style.css"> -->
-  
+
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
   <!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
-       Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
+       Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects;
        for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
-  
+
 
   <style type="text/css">
-  	
+
 	/* simple styles */
   	body { font-family: Arial; font-size: 14px; background: #EEEEEE; }
 	.code { font-family: 'Courier New'; background: #CCCCCC; display: inline; padding: 0px 3px; }
-	
+
 	.box p { min-height: 60px; }
-	
-	
+
+
 	/* stuff to pull out for the plugin */
 	.box { width: 350px; margin: 20px; float: left; border: 2px solid #CCCCC; border-radius: 5px; }
   	.box ul { padding-left: 0px; }
 	.box ul li { display: block; padding: 20px; border: 1px solid #CCCCCC; }
-	
+
   </style>
-  
+
 </head>
 
 <body>
@@ -55,45 +55,45 @@
     <div id="main" role="main">
 
 		<h2>QR Bookmarklet</h2>
-		
+
 		<p>  </p>
-		
+
 		<h3>How to use:</h3>
 		<ul>
 			<li>So...you're hangin' out with your friends. </li>
 			<li>You've got your phone and you want them to see this cool article / page / post / whatever. </li>
-			<li>Instead of a public recitation of digital poetry comprising of "ache tee tee pee...blah blah dot com"... "pound.. then go down to the bottom"... ugh.</li> 
+			<li>Instead of a public recitation of digital poetry comprising of "ache tee tee pee...blah blah dot com"... "pound.. then go down to the bottom"... ugh.</li>
 			<li>Hit this bookmarklet and generate a QR code that takes your friend straight to the page that you're on. </li>
 		</ul>
-		
+
 		<h3>How to install (desktop):</h3>
 		<ul>
-			<li>Drag this <a href="javascript:(function(){var%20jselem=document.createElement('SCRIPT');jselem.type='text/javascript';jselem.src='http://weisjohn.github.com/widgets/qr_bookmarklet/js/qr_bookmarklet.js';document.getElementsByTagName('body')[0].appendChild(jselem);})();">QR</a> link to your bookmarks bar.</li>
+			<li>Drag this <a href="javascript:(function(){var%20jselem=document.createElement('SCRIPT');jselem.type='text/javascript';jselem.src='//weisjohn.github.com/widgets/qr_bookmarklet/js/qr_bookmarklet.js';document.getElementsByTagName('body')[0].appendChild(jselem);})();">QR</a> link to your bookmarks bar.</li>
 			<li>You now have a bookmarklet! Yay! You can now click the bookmarklet to generate a QR Code for any page that you're on.</li>
 		</ul>
-		
+
 
 		<h3>How to install (mobile):</h3>
 		<ul>
-			<li>Click on this <a href="#javascript:(function(){jselem=document.createElement('SCRIPT');jselem.type='text/javascript';jselem.src='http://weisjohn.github.com/widgets/qr_bookmarklet/js/qr_bookmarklet.js';document.getElementsByTagName('body')[0].appendChild(jselem);})();">link</a> (the page won't change in your browser)</li>
+			<li>Click on this <a href="#javascript:(function(){jselem=document.createElement('SCRIPT');jselem.type='text/javascript';jselem.src='//weisjohn.github.com/widgets/qr_bookmarklet/js/qr_bookmarklet.js';document.getElementsByTagName('body')[0].appendChild(jselem);})();">link</a> (the page won't change in your browser)</li>
 			<li>Add a bookmark for this page.</li>
 			<li>Edit the bookmark and delete everything up to and including the "#" symbol.</li>
 			<li>You now have a bookmarklet! Yay! You can now click the bookmarklet to share any page that you're on.</li>
 		</ul>
-		
+
 		<h3>Try me:</h3>
 		<ul>
 			<li>To see it in action: <a href="#" onclick="gencode()">click here</a></li>
 		</ul>
-		
+
 		<h3>Credits:</h3>
 		<ul>
 			<li><a href="http://jetienne.com/" target="_blank">Jerome Etienne</a> for the awesome <a href="https://github.com/jeromeetienne/jquery-qrcode">jQuery QR Code Plugin</a></li>
 			<li><a href="http://www.d-project.com/qrcode/index.html" target="_blank">Kazuhiko Arase</a> for the heavy lifting of generating the QR Code. <br /> (QR Code is registered trademark of DENSO WAVE INCORPORATED.)</li>
 		</ul>
-		
+
 		<div class="box"></div>
-		
+
     </div>
     <footer>
 
@@ -104,16 +104,16 @@
   <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <!-- 
+  <!--
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   	<script>window.jQuery || document.write('<script src="js/jquery-1.6.2.js"><\/script>')</script>
   -->
 
   <!-- scripts concatenated and minified via build script -->
   <script src="js/qr_bookmarklet_src.js"></script>
-  
+
   <!-- end scripts -->
-  
+
 
 </body>
 </html>

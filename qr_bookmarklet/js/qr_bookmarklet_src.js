@@ -1,11 +1,11 @@
 
 
 (function() {
-	
+
 	function load_script(src, test, on_asset_load){
-	
+
 		if (!test() ){
-			
+
 			var s = document.createElement('script');
 			s.setAttribute('src',src);
 			document.getElementsByTagName('body')[0].appendChild(s);
@@ -23,44 +23,44 @@
 				}, 10);
 
 			})();
-			
+
 		} else {
 			on_asset_load();
 		}
 
 	}
-	
-	load_script("http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js", function(){
+
+	load_script("//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js", function(){
 
 		return window.jQuery;
-		
+
 	}, function(){
-		
-		load_script("http://weisjohn.github.com/widgets/qr_bookmarklet/js/jquery.qrcode.js/qrcode.js", function() {
-			
+
+		load_script("//weisjohn.github.com/widgets/qr_bookmarklet/js/jquery.qrcode.js/qrcode.js", function() {
+
 			return window.QR8bitByte;
-			
+
 		}, function() {
-			
-			load_script("http://weisjohn.github.com/widgets/qr_bookmarklet/js/jquery.qrcode.js/jquery.qrcode.js", function(){
-			
+
+			load_script("//weisjohn.github.com/widgets/qr_bookmarklet/js/jquery.qrcode.js/jquery.qrcode.js", function(){
+
 				return jQuery.fn.qrcode;
-				
+
 			}, function() {
-				
+
 				window.gencode = function() {
-					
+
 					// This fix addresses an iOS bug, so return early if the UA claims it's something else.
 					var positioning = "fixed";
 					var ua = navigator.userAgent;
 						if( ( /iPhone|iPad|iPod/.test( navigator.platform ) && /OS [1-5]_[0-9_]* like Mac OS X/i.test(ua) && ua.indexOf( "AppleWebKit" ) > -1 ) ){
 						positioning = "absolute";
 					}
-					
+
 				jQuery("<div></div>")
 					.appendTo("body")
-					.css({ 
-						"position": positioning, 
+					.css({
+						"position": positioning,
 						"z-index" : "16777271", // http://www.puidokas.com/max-z-index/
 						"top" : "0",
 						"left" : "0",
@@ -75,7 +75,7 @@
 						jQuery("<a></a>")
 							.html("close")
 							.attr("href", "#")
-							.css({ 
+							.css({
 								"background" : "#CCCCCC",
 								"display" : "block",
 								"textAlign" : "center",
@@ -88,15 +88,15 @@
 								jQuery(this).parent().remove();
 							})
 					);
-				
+
 				}
-				
+
 				// gencode();
-				
+
 			});
-			
+
 		});
-		
+
  	});
-		
+
 })();
